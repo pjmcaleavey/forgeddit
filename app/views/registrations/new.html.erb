@@ -1,0 +1,12 @@
+<h3> New User </h3>
+
+<%= form_tag(new_registration_path) %>
+            <!-- ??????? -->
+
+  <ul class="form-errors">
+    <% if @user.errors.count > 0 %>
+      <%= @user.errors.full_messages.each do |message| %>
+        <li class="form-error"><%= message %>
+      <% end /%>
+    <% end %>
+  </ul>
