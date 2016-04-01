@@ -1,12 +1,36 @@
 <h3> New User </h3>
 
-<%= form_tag(new_registration_path) %>
-            <!-- ??????? -->
+<%= form_tag(register_path) do %>
+
 
   <ul class="form-errors">
     <% if @user.errors.count > 0 %>
-      <%= @user.errors.full_messages.each do |message| %>
-        <li class="form-error"><%= message %>
-      <% end /%>
+      <% @user.errors.full_messages.each do |message| %>
+        <li class="form-error"><%= message %></li>
+      <% end %>
     <% end %>
   </ul>
+
+  <div class="user-field">
+    <%= label_tag("First") %></br>
+    <%= text_field_tag("first", @user.first_name) %>
+  </div>
+
+  <div class="user-field">
+    <%= label_tag("Last") %></br>
+    <%= text_field_tag("last", @user.last_name) %>
+  </div>
+
+  <div class="user-field">
+    <%= label_tag("Email") %></br>
+    <%= text_field_tag("email", @user.email) %>
+  </div>
+
+  <div class="user-field">
+    <%= label_tag("Password") %></br>
+    <%= text_field_tag("password", @user.password) %>
+  </div>
+
+  <%= button_tag("Submit")%>
+
+<% end %>
