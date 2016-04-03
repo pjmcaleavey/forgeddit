@@ -6,6 +6,24 @@ Rails.application.routes.draw do
   get "register/new", to: "registrations#new", as: "new_registration"
   post "register", to: "registrations#create", as: "register"
 
+  get "login", to: "logins#new", as: "login"
+  post "login", to: "logins#create"
+  delete "login", to: "logins#destroy"
+
+  get "posts", to: "posts#index", as: "posts"
+  get "posts/new", to: "posts#new", as: "new_posts"
+  post "posts", to: "posts#create"
+  get "posts/:id", to: "posts#show", as: "post" # POST SHOW ROUTE
+  get "posts/:id/edit", to: "posts#edit", as: "edit_post"
+  put "posts/:id", to: "posts#update"
+  patch "posts/:id", to: "posts#update"
+  delete "posts/:id", to: "posts#destroy"
+
+  # resources :posts
+
+  # get "posts/:id/comments", to: "comments#index", as: "comments"
+  # post "posts/:id/comments"
+  # get "comments/:id" # THEC
 
 
   # You can have the root of your site routed with "root"
