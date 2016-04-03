@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    #comments
+    @post = Post.find(params["id"])
+    render :show
   end
 
   def create

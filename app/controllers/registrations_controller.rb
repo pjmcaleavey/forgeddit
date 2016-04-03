@@ -5,13 +5,13 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(first_name: params["first"], last_name: params["last"],
-                     email: params["email"], password: params["password"])
+    @user = User.new(first_name: params[:first], last_name: params[:last],
+                     email: params[:email], password: params[:password])
 
     if @user.save
       redirect_to login_path
     else
-      redirect_to :new
+      redirect_to new_registration
     end
   end
 end

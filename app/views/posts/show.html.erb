@@ -1,0 +1,16 @@
+<h2> Post a Comment </h2>
+
+
+    <%= form_tag(post_comments_path(@post.id)) do %>
+      <div class="comment-field">
+          <%= label_tag("Comment") %>
+          <%= text_area_tag("body", nil, cols: 25, rows: 5) %>
+      </div>
+
+      <%= button_tag("Post Comment") %>
+    <% end %>
+</div>
+
+</br>
+</br>
+<%= link_to("Home", root_path) %>
