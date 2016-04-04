@@ -18,11 +18,8 @@
   <% @post.comments.each do |comment| %>
       <div class="post-comment">
           <%= simple_format(comment.body) %>
-          <%= binding.pry %>
-          <p>Comment by: <%= comment.user.first_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
+          <p><%= User.find(current_user.id).first_name %> made comment<%= time_ago_in_words(@post.created_at) %> ago</p>
+        </br>
       </div>
   <% end %>
 </div>
-
-</br>
-</br>
