@@ -9,10 +9,9 @@
     <li class="post">
       <h2><a href="<%= post.link_url %>"><%= post.title %></a></h2>
       <%= link_to("Delete", post_path(post), method: :delete) %>
-      <%= link_to("Comments", post_comments_path(post)) %>
+      <%= link_to("Comments", post_path(post)) %>
       <p>Posted by: <%= post.user.first_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
     </li>
-
 
   <% end %>
 </ul>

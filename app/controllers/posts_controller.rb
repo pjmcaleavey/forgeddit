@@ -1,23 +1,28 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    # render :index
+     render :index
   end
 
   def new
-    # render :new
+     render :new
+     #if current_user can
+     #else can't
   end
 
   def show
+    #make sure starts w http/https
+    #link_url = params["url"]
+    #link_url = "http://" + link_url unless link_url =~ #/^http(s)?:regex
     @post = Post.find(params["id"])
     render :show
   end
 
   def create
-    @post = current_user.posts.new(user_id: session[:user_id], title: params[:title],
+    @post = current_user.posts.new(user_id: session[:user_id], title: params[:title],##describe
                      link_url: params[:link_url])
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path(@post)##describe
     else
       render :new
     end
@@ -25,7 +30,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    binding.pry
     if current_user.id == @post.user_id
       @post.destroy
     else
