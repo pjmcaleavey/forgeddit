@@ -10,15 +10,15 @@ class LoginsController < ApplicationController
       flash[:notice] = "Welcome #{@user.first_name}"
       redirect_to :root
     else
-      flash[:notice] = "Email and password do not match."##NEVER GOES AWAY  #details on flash
+      flash[:notice] = "Email and password do not match."##NEVER GOES AWAY#details on flash #does this on logout?
       redirect_to login_path #render :new ??
     end
   end
 
   def destroy
+    flash[:notice] = "You successfully logged out."
     session[:user_id] = nil
-    redirect_to login_path
-    flash[:notice] = "#{@user.first_name} logged out."##NOTHING
+    redirect_to :root
   end
 end
 

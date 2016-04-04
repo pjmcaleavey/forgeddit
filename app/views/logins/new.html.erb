@@ -1,3 +1,6 @@
+<%= link_to("Home", root_path) %>
+<%= link_to("Register", new_registration_path) %>
+
 <h2> Login </h2>
 
 <%= form_tag(login_path) do %>
@@ -12,10 +15,5 @@
   </div>
 
   <%= button_tag("Submit") %>
-
-  </br>
-  </br>
-
-  <%= link_to("Home", root_path) %>
 
 <% end %>

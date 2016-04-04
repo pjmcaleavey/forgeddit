@@ -1,7 +1,8 @@
+<%= link_to("Home", root_path) %>
+
 <h1><%= @post.title %></h1>
 
 <h2> Post a Comment </h2>
-
 
 <%= form_tag(post_comments_path(@post.id)) do %>
   <div class="comment-field">
@@ -12,11 +13,16 @@
   <%= button_tag("Post Comment") %>
 <% end %>
 
-<% @post.comments.each do |comment| %>
-   DISPLAY COMMENTS HERE
-<% end %>
-
+<h3>Comments</h3>
+<div class="comments">
+  <% @post.comments.each do |comment| %>
+      <div class="post-comment">
+          <%= simple_format(comment.body) %>
+          <%= binding.pry %>
+          <p>Comment by: <%= comment.user.first_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
+      </div>
+  <% end %>
+</div>
 
 </br>
 </br>
-<%= link_to("Home", root_path) %>

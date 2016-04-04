@@ -1,8 +1,11 @@
-<%= link_to("Create New Post", new_posts_path) %>
+
+<%= link_to("Register", new_registration_path) %>
 <%= link_to("Login", login_path) %>
-<%= link_to("Log Out", login_path, method: :destroy) %>
+<%= link_to("Log Out", login_path, method: :delete) %>
 
 <h1> FORGEDDIT! </h1>
+
+<h3><%= link_to("Create New Post", new_posts_path) %></h3>
 
 <ul class="posts">
   <% @posts.each do |post| %>

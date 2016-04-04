@@ -32,8 +32,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.id == @post.user_id
       @post.destroy
+      #redirect_to :root
     else
-      puts "You can only delete your posts."
+      flash[:notice] = "You can only delete your posts."
     end
+    redirect_to :root
   end
 end
