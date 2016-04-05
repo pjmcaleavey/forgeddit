@@ -8,7 +8,7 @@
 <h3><%= link_to("Create New Post", new_posts_path) %></h3>
 
 <ul class="posts">
-  <% @posts.each do |post| %>
+  <% @posts.order(created_at: :DESC).each do |post| %>
     <li class="post">
       <h2><a href="<%= post.link_url %>"><%= post.title %></a></h2>
       <%= link_to("Delete", post_path(post), method: :delete) %>

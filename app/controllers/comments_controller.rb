@@ -11,9 +11,7 @@ class CommentsController < ApplicationController
     #binding.pry
     @post = Post.find(params[:id])
     comment = Comment.find(params[:comment_id])
-    #binding.pry
     if current_user.id == comment.user_id
-      #binding.pry
       comment.destroy
     else
       flash[:notice] = "You can only delete your comments."
