@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   # resources :posts
   post "posts/:id/comments", to: "comments#create", as: "post_comments"
-  get "posts:id/comments", to: "comments#destroy"
+  delete "posts/:id/comments/:comment_id", to: "comments#destroy", as: "delete_comments"
   # get "posts/:id/comments", to: "comments#index", as: "comments"
   # post "posts/:id/comments"
   # get "comments/:id" # THEC

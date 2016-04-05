@@ -3,11 +3,10 @@
 
 <h1><%= @post.title %></h1>
 
-<h2> Post a Comment </h2>
+<h2> Make a Comment </h2>
 
 <%= form_tag(post_comments_path(@post.id)) do %>
   <div class="comment-field">
-      <%= label_tag("Comment") %>
       <%= text_area_tag("body", nil, cols: 25, rows: 5) %>
   </div>
 
@@ -19,9 +18,10 @@
   <% @post.comments.each do |comment| %>
       <div class="post-comment">
           <%= simple_format(comment.body) %>
-          <p><%= User.find(current_user.id).first_name %> made comment
+          <p><%= User.find(comment.user_id).first_name %> made comment
             <%=time_ago_in_words(comment.created_at)%> ago</p>
-            <%= link_to("Delete", post_comments_path(comment), method: :delete) %>
+
+            <%= link_to("Delete", delete_comments_path(@post.id, comment.id), method: :delete) %>
         </br>
       </div>
   <% end %>

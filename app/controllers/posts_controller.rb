@@ -29,11 +29,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
-    # nilUser!
     @post = Post.find(params[:id])
-    # if current_user == nil
-    #   flash[:notice] = "You must be logged in to do that."
     if current_user.id == @post.user_id
       @post.destroy
     else
