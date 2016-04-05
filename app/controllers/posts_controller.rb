@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
+  before_action :authenticate!, except: [:index]
+
   def index
     @posts = Post.all
      render :index
   end
 
   def new
-    authenticate!
-     #render :new
+     render :new
   end
 
   def show
@@ -18,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    authenticate!
     @post = current_user.posts.new(user_id: session[:user_id], title: params[:title],##describe
                      link_url: params[:link_url])
     if @post.save
@@ -29,8 +29,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    authenticate!
+    # binding.pry
+    # nilUser!
     @post = Post.find(params[:id])
+    # if current_user == nil
+    #   flash[:notice] = "You must be logged in to do that."
     if current_user.id == @post.user_id
       @post.destroy
     else

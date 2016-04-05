@@ -1,4 +1,5 @@
 <%= link_to("Home", root_path) %>
+<%= link_to("Log Out", login_path, method: :delete) %>
 
 <h1><%= @post.title %></h1>
 
@@ -18,7 +19,9 @@
   <% @post.comments.each do |comment| %>
       <div class="post-comment">
           <%= simple_format(comment.body) %>
-          <p><%= User.find(current_user.id).first_name %> made comment <%= time_ago_in_words(comment.created_at) %> ago</p>
+          <p><%= User.find(current_user.id).first_name %> made comment
+            <%=time_ago_in_words(comment.created_at)%> ago</p>
+            <%= link_to("Delete", post_comments_path(comment), method: :delete) %>
         </br>
       </div>
   <% end %>

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       if user_id
         User.find_by(id: user_id)
       end
-    end
+  end
 
   def authenticate!
     unless current_user
@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
       redirect_to :root
     end
   end
-
 end
