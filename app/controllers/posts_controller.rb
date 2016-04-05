@@ -5,9 +5,8 @@ class PostsController < ApplicationController
   end
 
   def new
-     render :new
-     #if current_user can
-     #else can't
+    authenticate!
+     #render :new
   end
 
   def show
@@ -19,6 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    authenticate!
     @post = current_user.posts.new(user_id: session[:user_id], title: params[:title],##describe
                      link_url: params[:link_url])
     if @post.save
@@ -29,10 +29,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authenticate!
     @post = Post.find(params[:id])
     if current_user.id == @post.user_id
       @post.destroy
-      #redirect_to :root
     else
       flash[:notice] = "You can only delete your posts."
     end

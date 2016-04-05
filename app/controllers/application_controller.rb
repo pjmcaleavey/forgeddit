@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  def authenticate!
+    unless current_user
+      flash[:notice] = "You are not logged in."
+      redirect_to :root
+    end
+  end
+
 end
