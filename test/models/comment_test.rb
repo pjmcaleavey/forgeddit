@@ -8,7 +8,7 @@ class CommentTest < ActiveSupport::TestCase
     @comment = Comment.new(body: "")
     refute @comment.valid?
     @comment = Comment.new(body: "words")
-    assert true
+    assert @comment.valid?
   end
 end
 

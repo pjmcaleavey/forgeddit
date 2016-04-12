@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(password: "Shouldn't work")
     refute @user.valid?
     @user = User.new(password: "ShouldWork")
-    assert true
+    assert @user.valid?
   end
 end
 
