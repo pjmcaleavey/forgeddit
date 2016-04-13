@@ -11,7 +11,8 @@ class RegistrationsController < ApplicationController
     if @user.save
       redirect_to login_path
     else
-      redirect_to new_registration
+      #redirect_to new_registration
+      render :new
     end
   end
 end

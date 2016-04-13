@@ -35,6 +35,6 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "You can only delete your posts."
     end
-    redirect_to :root
+    redirect_to root_path
   end
 end

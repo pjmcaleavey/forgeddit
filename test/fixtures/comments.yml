@@ -2,8 +2,5 @@
 
 one:
   post_id: 1
-  body: MyText
-
-two:
-  post_id: 1
-  body: MyText
+  user: booger
+  body: Testing
